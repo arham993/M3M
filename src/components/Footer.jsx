@@ -37,11 +37,10 @@ export function Footer() {
           <EnquireButton small>Enquire Now</EnquireButton>
         </div>
         <p className="disclaimer">
-          <strong>Disclaimer:</strong> This website is operated by {CONFIG.brandName}, an authorised channel partner, and is not
-          the official website of the developer M3M India. Information is for reference only and does not constitute an offer
-          or a legally binding agreement. Images, renders, maps and plans are artistic impressions, not to scale and subject to
-          change. Prices, payment plans, specifications and availability are subject to change without notice. Please verify
-          all details, including area, amenities, terms of sale and payments, with the developer before booking.
+          <strong>Disclaimer:</strong> This website is operated by {CONFIG.brandName}. Information is for reference only and
+          does not constitute an offer or a legally binding agreement. Images, renders, maps and plans are artistic impressions,
+          not to scale and subject to change. Prices, payment plans, specifications and availability are subject to change
+          without notice. Please verify all details, including area, amenities, terms of sale and payments, before booking.
         </p>
         <p className="disclaimer">
           By submitting your details you consent to be contacted by {CONFIG.brandName} and its RERA-registered partners by call,

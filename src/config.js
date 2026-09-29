@@ -5,8 +5,8 @@
 const env = import.meta.env;
 
 export const CONFIG = {
-  /** Channel-partner company name, shown in the footer disclaimer */
-  brandName: env.VITE_BRAND_NAME || 'Your Company Name',
+  /** Company name, shown in the footer disclaimer */
+  brandName: env.VITE_BRAND_NAME || 'M3M',
   /** Call number, e.g. "+919876543210". Call buttons are hidden while empty. */
   phone: env.VITE_PHONE || '',
   /** WhatsApp number, digits only with country code, e.g. "919876543210". Hidden while empty. */
