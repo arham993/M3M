@@ -56,7 +56,7 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt in
 
 # 2. Code
 sudo mkdir -p /var/www/jewelcrest/releases && sudo chown -R $USER /var/www/jewelcrest
-git clone -b react https://github.com/arham993/M3M.git ~/jewelcrest && cd ~/jewelcrest
+git clone https://github.com/orbisdata00/M3M.git ~/jewelcrest && cd ~/jewelcrest
 
 # 3. Nginx
 sudo cp deploy/nginx.conf /etc/nginx/sites-available/jewelcrest
