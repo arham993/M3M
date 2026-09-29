@@ -604,6 +604,7 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding:56px 0
     </div>
     <label class="consent"><input type="checkbox" name="consent" checked required><span>I agree to be contacted about this project by call, SMS or WhatsApp.</span></label>
     <input type="hidden" name="source"><input type="hidden" name="page"><input type="hidden" name="utm">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <button class="btn btn-enquire" type="submit"><span class="spark"></span><span class="lbl">Get Call Back</span></button>
   </form>
   <div class="form-ok" role="status">
@@ -619,7 +620,7 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding:56px 0
    - brandName:    your channel-partner company name (shown in disclaimer)
    - phone:        call number, e.g. "+919876543210" (Call buttons hide if empty)
    - whatsapp:     WhatsApp number, digits only with country code, e.g. "919876543210"
-   - formEndpoint: URL that receives leads as a POST (Google Apps Script
+   - formEndpoint: Google Apps Script web app URL (see google-sheet/Code.gs), or any URL that accepts a POST (Google Apps Script
                    web app, Formspree, Zapier/Make webhook, your CRM, PHP mailer)
    - brochureUrl:  file downloaded after a "Download Brochure" enquiry
    - popupDelayMs: auto popup delay (10 seconds)
@@ -729,7 +730,8 @@ const CONFIG = {
         request: inModal?context:'Enquire Now', source:form.source.value||'section-form', page:form.page.value, utm:form.utm.value, submitted_at:new Date().toISOString()};
       try{
         if(CONFIG.formEndpoint){
-          const body=new FormData(); Object.entries(data).forEach(([k,v])=>body.append(k,v));
+          // URL-encoded body: Google Apps Script reads it straight into e.parameter
+          const body=new URLSearchParams({...data, website: form.website.value});
           await fetch(CONFIG.formEndpoint,{method:'POST',body,mode:'no-cors'});
         } else {
           console.warn('[Lead] CONFIG.formEndpoint is empty. Lead not sent anywhere:',data);
