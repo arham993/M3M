@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jewelcrestnoidasec97.com/sitemap.xml
