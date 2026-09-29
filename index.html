@@ -732,7 +732,10 @@ const CONFIG = {
         if(CONFIG.formEndpoint){
           // URL-encoded body: Google Apps Script reads it straight into e.parameter
           const body=new URLSearchParams({...data, website: form.website.value});
-          await fetch(CONFIG.formEndpoint,{method:'POST',body,mode:'no-cors'});
+          // sendBeacon queues the POST in the background and still delivers it if the visitor
+          // closes the tab, so the thank-you shows instantly. Fallback: normal fetch.
+          const queued = navigator.sendBeacon && navigator.sendBeacon(CONFIG.formEndpoint, body);
+          if(!queued) await fetch(CONFIG.formEndpoint,{method:'POST',body,mode:'no-cors',keepalive:true});
         } else {
           console.warn('[Lead] CONFIG.formEndpoint is empty. Lead not sent anywhere:',data);
         }
