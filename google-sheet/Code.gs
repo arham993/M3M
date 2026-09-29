@@ -21,7 +21,7 @@
 const SHEET_NAME = 'Leads';
 
 // Who gets the lead alert. Several people: 'a@x.com, b@y.com'. Leave '' to turn emails off.
-const NOTIFY_EMAIL = 'faaiz2144@gmail.com';
+const NOTIFY_EMAIL = 'singhrohit16988@gmail.com, abhishek.anand582@gmail.com, arham@raysuite.ai';
 
 const COLUMNS = [
   ['submitted_ist', 'Date & Time (IST)'],
