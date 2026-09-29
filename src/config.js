@@ -10,7 +10,7 @@ export const CONFIG = {
   /** Call number, e.g. "+919876543210". Call buttons are hidden while empty. */
   phone: env.VITE_PHONE || '',
   /** WhatsApp number, digits only with country code, e.g. "919876543210". Hidden while empty. */
-  whatsapp: env.VITE_WHATSAPP || '',
+  whatsapp: env.VITE_WHATSAPP || '919999434837',
   /** Google Apps Script web app that writes leads to the Google Sheet (google-sheet/Code.gs) */
   formEndpoint:
     env.VITE_FORM_ENDPOINT ||
