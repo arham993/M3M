@@ -25,5 +25,6 @@ sudo ln -sfn "$RELEASE" "$WEB_ROOT/current"
 echo "==> Keeping the 3 most recent releases"
 ls -1dt "$WEB_ROOT"/releases/* | tail -n +4 | xargs -r sudo rm -rf
 
-sudo nginx -t && sudo systemctl reload nginx
+sudo nginx -t
+sudo systemctl reload nginx 2>/dev/null || sudo nginx -s reload
 echo "==> Live: https://jewelcrestnoidasec97.com"
