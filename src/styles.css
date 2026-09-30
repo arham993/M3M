@@ -306,3 +306,31 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding:56px 0
   .hero .rv{transition-delay:calc(var(--i,0) * 90ms)}
 }
 .lb .lb-cta:hover{background:#000}
+
+/* ---------- Thank-you page ---------- */
+.ty{padding:56px 0 88px}
+.ty-hero{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:start}
+.ty-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:48px 44px;box-shadow:var(--shadow)}
+.ty-icon{font-size:3.4rem;color:var(--ok)}
+.ty h1{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:600;margin:14px 0 16px}
+.ty .lead{margin-bottom:8px}
+.ty-note{margin-top:14px;font-weight:600;color:var(--accent)}
+.ty-actions{margin-top:30px}
+.ty-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:step}
+.ty-steps li{counter-increment:step;display:grid;grid-template-columns:40px 1fr;column-gap:14px;row-gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:20px 22px}
+.ty-steps li::before{content:counter(step);grid-row:span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:700 1rem "Urbanist",sans-serif}
+.ty-steps b{color:var(--ink);font-weight:700}
+.ty-steps span{color:var(--muted);font-size:.92rem}
+.ty-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.ty-photos img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:var(--r-card)}
+.ty-home{margin-top:28px;text-align:center;font-weight:600}
+.ty-home a{color:var(--ink)}
+@media (max-width:900px){
+  .ty{padding:28px 0 64px}
+  .ty-hero{grid-template-columns:1fr;gap:20px}
+  .ty-card{padding:32px 22px}
+  .ty-actions .btn{width:100%}
+  .ty-photos{grid-template-columns:1fr 1fr;gap:10px}
+  .ty-photos img:last-child{display:none}
+}
+.hdr-ty .hdr-cta{margin-left:auto}

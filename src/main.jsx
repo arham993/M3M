@@ -1,14 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
-import '@fontsource/manrope/400.css';
-import '@fontsource/manrope/500.css';
-import '@fontsource/manrope/600.css';
-import '@fontsource/manrope/700.css';
-import '@fontsource/urbanist/500.css';
-import '@fontsource/urbanist/600.css';
-import '@fontsource/urbanist/700.css';
-import '@fontsource/urbanist/500-italic.css';
-import './styles.css';
+import './base.js';
 import App from './App.jsx';
 
 const root = document.getElementById('root');

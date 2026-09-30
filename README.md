@@ -22,6 +22,13 @@ deploy/                  Nginx config + one-command deploy script
 
 To change prices, text or photos, edit `src/data/project.js` (and `public/images/`), then rebuild.
 
+## Pages
+
+- `/` home page (`index.html`, `src/App.jsx`)
+- `/thank-you/` shown after every enquiry (`thank-you/index.html`, `src/pages/ThankYou.jsx`). Not indexed by Google.
+  Use it as the conversion page in Google Ads / Meta ("Page URL contains /thank-you"),
+  or the GTM custom event `lead_thank_you`. Brochure enquiries land on `/thank-you/?brochure=1` and the PDF downloads there.
+
 ## Settings
 
 Edit `src/config.js`, or copy `.env.example` to `.env` and fill it in:

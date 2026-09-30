@@ -1,7 +1,7 @@
 import { useId, useRef, useState } from 'react';
 import { CheckCircle } from '../icons.js';
 import { INTEREST_OPTIONS } from '../data/project.js';
-import { downloadBrochure, submitLead, validateLead } from '../lib/leads.js';
+import { goToThankYou, submitLead, validateLead } from '../lib/leads.js';
 
 /** Keeps 10 digits, so pasted numbers like "+91 98123 45678" or "098123 45678" work */
 function normalisePhone(raw) {
@@ -54,7 +54,7 @@ export default function LeadForm({ request = 'Enquire Now', source = 'section-fo
         source,
       }, honeypot.current?.value || '');
       setStatus('done');
-      if (request === 'Download Brochure') downloadBrochure();
+      goToThankYou(request, values.name);
     } catch {
       setStatus('error');
     }

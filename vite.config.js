@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -6,5 +7,13 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: process.env.BASE_PATH || '/',
-  build: { assetsInlineLimit: 0 },
+  build: {
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        thankyou: resolve(__dirname, 'thank-you/index.html'),
+      },
+    },
+  },
 });

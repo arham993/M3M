@@ -2,6 +2,8 @@ import { CONFIG, asset } from '../config.js';
 
 const LEAD_KEY = 'jc_lead';
 const POPUP_KEY = 'jc_popup_seen';
+const TY_NAME_KEY = 'jc_ty_name';
+const TY_REQUEST_KEY = 'jc_ty_request';
 
 /** sessionStorage can throw in private mode or when blocked, so every access is guarded. */
 const session = {
@@ -68,4 +70,24 @@ export function downloadBrochure() {
   document.body.appendChild(a);
   a.click();
   a.remove();
+}
+
+/**
+ * Sends the visitor to the thank-you page after a lead (its own URL, for ad conversion tracking).
+ * The first name travels in sessionStorage, never in the URL.
+ */
+export function goToThankYou(request, name) {
+  session.set(TY_NAME_KEY, String(name || '').trim().split(/\s+/)[0] || '');
+  session.set(TY_REQUEST_KEY, request || '');
+  const query = request === 'Download Brochure' ? '?brochure=1' : '';
+  window.location.assign(`${asset('thank-you/')}${query}`);
+}
+
+export function readThankYouContext() {
+  return {
+    name: session.get(TY_NAME_KEY) || '',
+    request: session.get(TY_REQUEST_KEY) || '',
+    brochure: new URLSearchParams(window.location.search).get('brochure') === '1',
+    hasLead: hasSubmittedLead(),
+  };
 }

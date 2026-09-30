@@ -4,9 +4,9 @@ import { CONFIG } from '../config.js';
 import { NAV } from '../data/project.js';
 import EnquireButton from './EnquireButton.jsx';
 
-export function Logo() {
+export function Logo({ href = '#top' }) {
   return (
-    <a className="logo" href="#top" aria-label="M3M Jewel Crest home">
+    <a className="logo" href={href} aria-label="M3M Jewel Crest home">
       <b>M3M Jewel Crest</b><span>Sector 97, Noida</span>
     </a>
   );

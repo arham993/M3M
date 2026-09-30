@@ -9,7 +9,7 @@ const EnquiryContext = createContext(null);
  * and the popup shows that heading. It also opens by itself after CONFIG.popupDelayMs,
  * once per visit, and never after the visitor has already submitted a lead.
  */
-export function EnquiryProvider({ children }) {
+export function EnquiryProvider({ children, autoPopup = true }) {
   const [state, setState] = useState({ open: false, type: 'Enquire Now', source: 'button' });
 
   const openEnquiry = useCallback((type = 'Enquire Now', source = `cta:${type}`) => {
@@ -25,6 +25,7 @@ export function EnquiryProvider({ children }) {
   const closeEnquiry = useCallback(() => setState((s) => ({ ...s, open: false })), []);
 
   useEffect(() => {
+    if (!autoPopup) return undefined;
     const timer = window.setTimeout(() => {
       if (hasSubmittedLead() || hasSeenPopup()) return;
       setState((s) => {
@@ -34,7 +35,7 @@ export function EnquiryProvider({ children }) {
       });
     }, CONFIG.popupDelayMs);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [autoPopup]);
 
   const value = useMemo(() => ({ ...state, openEnquiry, closeEnquiry }), [state, openEnquiry, closeEnquiry]);
   return <EnquiryContext.Provider value={value}>{children}</EnquiryContext.Provider>;
