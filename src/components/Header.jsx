@@ -34,7 +34,7 @@ export default function Header() {
           </nav>
           <div className="hdr-cta">
             {CONFIG.phone && (
-              <a className="hdr-call" href={`tel:${CONFIG.phone}`}>
+              <a className="hdr-call" href={`tel:${CONFIG.phone}`} onClick={() => (window.dataLayer = window.dataLayer || []).push({ event: 'call_click' })}>
                 <PhoneCall aria-hidden="true" />{CONFIG.phone.replace(/^\+91/, '+91 ')}
               </a>
             )}

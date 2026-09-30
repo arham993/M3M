@@ -261,10 +261,14 @@ footer{background:var(--surface);border-top:1px solid var(--line);padding:56px 0
 /* ---------- Floating actions ---------- */
 .side-tab{position:fixed;right:0;top:50%;z-index:30;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;background:var(--ink);color:#fff;border:0;padding:20px 12px;border-radius:0 12px 12px 0;font:700 .85rem "Manrope",sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:-3px 0 0 var(--accent) inset}
 .side-tab:hover{background:#000}
-.wa-fab{position:fixed;right:22px;bottom:22px;z-index:30;width:56px;height:56px;border-radius:50%;background:#1F8F4E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.9rem;text-decoration:none;box-shadow:0 12px 26px -10px rgba(0,0,0,.45)}
+.fabs{position:fixed;right:22px;bottom:22px;z-index:30;display:grid;gap:12px}
+.fab{width:56px;height:56px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;text-decoration:none;box-shadow:0 12px 26px -10px rgba(0,0,0,.45);transition:transform .25s var(--ease)}
+.fab:hover{transform:translateY(-2px) scale(1.04)}
+.fab-call{background:var(--ink);box-shadow:0 0 0 3px var(--accent-soft),0 0 0 4.5px var(--accent),0 12px 26px -10px rgba(0,0,0,.45)}
+.fab-wa{background:#1F8F4E;font-size:1.9rem}
 .m-bar{display:none}
 @media (max-width:900px){
-  .side-tab,.wa-fab{display:none!important}
+  .side-tab,.fabs{display:none!important}
   .m-bar{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;position:fixed;left:0;right:0;bottom:0;z-index:35;background:var(--surface);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px}
   .m-bar a,.m-bar button{height:48px;border-radius:var(--r-pill);display:flex;align-items:center;justify-content:center;gap:8px;font:700 .9rem "Manrope",sans-serif;text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:transparent}
   .m-bar .m-enq{background:var(--ink);color:#fff;box-shadow:0 0 0 2px var(--accent-soft),0 0 0 3.5px var(--accent)}

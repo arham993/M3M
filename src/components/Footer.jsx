@@ -51,20 +51,30 @@ export function Footer() {
   );
 }
 
-/** Desktop side tab + WhatsApp bubble, and the fixed bottom bar on mobile */
+/** Records call / WhatsApp taps for Tag Manager (e.g. Google Ads call conversions) */
+const track = (event) => () => { (window.dataLayer = window.dataLayer || []).push({ event }); };
+
+/** Desktop side tab + call and WhatsApp bubbles, and the fixed bottom bar on mobile */
 export function FloatingActions() {
   const { openEnquiry } = useEnquiry();
   return (
     <>
       <button type="button" className="side-tab" onClick={() => openEnquiry('Enquire Now')}>ENQUIRE NOW</button>
-      {CONFIG.whatsapp && (
-        <a className="wa-fab" href={waLink()} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-          <WhatsappLogo weight="fill" />
-        </a>
-      )}
+      <div className="fabs">
+        {CONFIG.phone && (
+          <a className="fab fab-call" href={`tel:${CONFIG.phone}`} onClick={track('call_click')} aria-label={`Call ${CONFIG.phone}`}>
+            <Phone weight="fill" />
+          </a>
+        )}
+        {CONFIG.whatsapp && (
+          <a className="fab fab-wa" href={waLink()} target="_blank" rel="noopener noreferrer" onClick={track('whatsapp_click')} aria-label="Chat on WhatsApp">
+            <WhatsappLogo weight="fill" />
+          </a>
+        )}
+      </div>
       <div className="m-bar">
-        {CONFIG.phone && <a href={`tel:${CONFIG.phone}`}><Phone aria-hidden="true" />Call</a>}
-        {CONFIG.whatsapp && <a href={waLink()} target="_blank" rel="noopener noreferrer"><WhatsappLogo aria-hidden="true" />WhatsApp</a>}
+        {CONFIG.phone && <a href={`tel:${CONFIG.phone}`} onClick={track('call_click')}><Phone aria-hidden="true" />Call</a>}
+        {CONFIG.whatsapp && <a href={waLink()} target="_blank" rel="noopener noreferrer" onClick={track('whatsapp_click')}><WhatsappLogo aria-hidden="true" />WhatsApp</a>}
         <button type="button" className="m-enq" onClick={() => openEnquiry('Enquire Now')}>
           <PaperPlaneTilt aria-hidden="true" />Enquire
         </button>
